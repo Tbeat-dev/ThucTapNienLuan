@@ -1,3 +1,5 @@
 site_name: Cinema API Docs
 nav:
   - Giới thiệu: index.md
+plugins:
+  - techdocs-core
