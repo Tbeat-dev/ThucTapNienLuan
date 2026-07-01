@@ -23,21 +23,3 @@ spec:
   owner: guest
   definition:
     $text: ./swagger.json
-
-kubernetes:
-  clusterLocatorMethods:
-    - type: 'config'
-      clusters:
-        - name: my-killercoda-cluster
-          url: https://kubernetes.default.svc # Đây là URL của cluster
-          authProvider: 'serviceAccount'
-          serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6InNkYW5KYVdUQ1dEeFpwMkJ6NjN1cHZCa3c3ZWxBSlRJV0xhdm5BSi05U1UifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzgyNzgwMzAwLCJpYXQiOjE3ODI3NzY3MDAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiNTliNGNlZmItZGIwMi00NDliLWE2YjEtNzU0YzQ2MTUwZWE0Iiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiZDNiODY5ZDUtZWE4Ny00NjdkLWE4NjctZmYzMDc1OWVjMWQzIn19LCJuYmYiOjE3ODI3NzY3MDAsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.QytkbsvsRseaBJTtCzvVAhNA1-gzYoUjFPV2YpwrBY_BtNulTs4c8hgSGxk5sHtQjo2fiuUwATa_BIxwbHnGRDFesTW1V9WZ9ePsjWf9SfaNW7ExQnSRsgRsRoqVufIJSyDqEwbk16AsarX_GoneaEmXaKmc904VFc_p8pHwFF4JHfFezlIOS6j88vAvKhFEs0Y5u6q2LH2s55AQLhAcrvJ3qkKUw-zHCdFNPXrNp3Wv6nJzIxYogWO2gyPa2qweTc-dfWtSbOH88CYliNcfnvBi7vpE_uR6Yw3gBc1mlwZLhHONgdlMBeREsPmh4eW2-Eu3CsuAzdmbHC4LIJAPgA
-          skipTLSVerify: true
-
-
-techdocs:
-  builder: 'local' # Dùng trình biên dịch nội bộ
-  generator:
-    runIn: 'local'
-  publisher:
-    type: 'local'
