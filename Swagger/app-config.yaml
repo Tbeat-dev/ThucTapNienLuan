@@ -1,0 +1,6 @@
+techdocs:
+  builder: 'local' # Dùng trình biên dịch nội bộ
+  generator:
+    runIn: 'local'
+  publisher:
+    type: 'local'

@@ -1,0 +1,20 @@
+{
+  "name": "thuctapnienluan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "generate:docs": "node generate-Docs.js",
+    "test": "node --check index.js && node --check generate-Docs.js && node --check swagger-options.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

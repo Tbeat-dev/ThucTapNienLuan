@@ -1,0 +1,8 @@
+﻿# Ignore dependencies and local files
+node_modules/
+**/node_modules/
+.env
+.env.local
+npm-debug.log*
+yarn-error.log*
+.vscode/
