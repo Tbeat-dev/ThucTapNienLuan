@@ -1,27 +1,43 @@
-name: Build and Push Docker Image
+﻿name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ] # Hoặc "master" tùy theo nhánh chính của bạn
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Đăng nhập Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
 
-    - name: Build và Push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        push: true
-        # Đổi cinema-api thành tên ứng dụng của bạn nếu muốn
-        tags: tbeat/cinema-api:latest
+      - name: Install dependencies
+        run: |
+          cd Backstage/my-developer-portal
+          yarn install --immutable
+
+      - name: Build backend
+        run: |
+          cd Backstage/my-developer-portal
+          yarn build:backend
+
+      - name: Đăng nhập Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build và Push
+        uses: docker/build-push-action@v4
+        with:
+          context: Backstage/my-developer-portal
+          file: Backstage/my-developer-portal/packages/backend/Dockerfile
+          push: true
+          tags: tbeat/cinema-api:latest
