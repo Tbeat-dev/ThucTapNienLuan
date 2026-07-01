@@ -38,7 +38,7 @@ jobs:
       - name: Build và Push
         uses: docker/build-push-action@v4
         with:
-          context: Backstage/my-developer-portal
-          file: packages/backend/Dockerfile
+          context: ./Backstage/my-developer-portal
+          file: ./Backstage/my-developer-portal/packages/backend/Dockerfile
           push: true
           tags: tbeat/cinema-api:latest
