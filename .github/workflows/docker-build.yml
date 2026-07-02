@@ -12,23 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: yarn
-          cache-dependency-path: Backstage/my-developer-portal/yarn.lock
-
-      - name: Install dependencies
-        run: |
-          cd Backstage/my-developer-portal
-          yarn install --immutable
-
-      - name: Build backend
-        run: |
-          cd Backstage/my-developer-portal
-          yarn build:backend
-
       - name: Đăng nhập Docker Hub
         uses: docker/login-action@v2
         with:
@@ -38,7 +21,7 @@ jobs:
       - name: Build và Push
         uses: docker/build-push-action@v4
         with:
-          context: ./Backstage/my-developer-portal
-          file: ./Backstage/my-developer-portal/packages/backend/Dockerfile
+          context: ./Swagger
+          file: ./Swagger/Dockerfile
           push: true
           tags: tbeat/cinema-api:latest
