@@ -9,7 +9,7 @@ function createSwaggerOptions(port = process.env.PORT || 3000) {
         version: '1.0.0',
         description: 'He thong tai lieu API quan ly rap chieu phim tap trung.',
       },
-      servers: [{ url: `http://localhost:${port}` }],
+      servers: [{ url: '/' }],
       components: {
         schemas: {
           HealthResponse: {
