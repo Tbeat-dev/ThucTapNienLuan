@@ -5,13 +5,13 @@ Tất cả thay đổi đáng chú ý của API được ghi lại tại đây.
 
 ## [1.1.0] - 2026-07-02
 ### Added
-- `Room` — quản lý phòng chiếu (thêm/sửa/xóa/lấy danh sách)
-- `Schedule` — quản lý lịch chiếu phim (gắn phim với phòng, khung giờ, giá vé)
-- `Employee` — quản lý nhân viên rạp
-- Server URL đổi sang đường dẫn tương đối (`/`) để tương thích đa môi trường triển khai
+- `Room` — quản lý phòng chiếu: `GET /room`, `GET /room/{id}`, `POST /room`, `PUT /room/{id}`, `DELETE /room/{id}`
+- `Schedule` — quản lý lịch chiếu phim: `GET /schedule`, `GET /schedule/{id}`, `POST /schedule`, `PUT /schedule/{id}`, `DELETE /schedule/{id}`
+- `Employee` — quản lý nhân viên rạp: `GET /employee`, `GET /employee/{id}`, `POST /employee`, `PUT /employee/{id}`, `DELETE /employee/{id}`
 
 ### Compatibility
-- Không có breaking change — toàn bộ endpoint `Movie`, `Health` từ v1.0.0 giữ nguyên hành vi.
+- **Không có breaking change.** Toàn bộ endpoint `Movie` và `Health` từ v1.0.0 giữ nguyên request/response, không thay đổi hành vi.
+- Đây là bản nâng cấp MINOR theo Semantic Versioning: bổ sung chức năng, tương thích ngược hoàn toàn với client đang dùng v1.0.0.
 
 ## [1.0.0] - 2026-07-01
 ### Added
