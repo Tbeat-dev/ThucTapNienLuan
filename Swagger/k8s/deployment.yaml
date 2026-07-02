@@ -21,7 +21,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: cinema-api
-          image: cinema-api-service:1.0.0
+          image: tbeat/cinema-api:latest
           imagePullPolicy: Always
           ports:
             - name: http
