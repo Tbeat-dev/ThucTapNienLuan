@@ -25,3 +25,10 @@ jobs:
           file: ./Swagger/Dockerfile
           push: true
           tags: tbeat/cinema-api:latest
+      - name: Quét lỗ hổng bảo mật với Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'tbeat/cinema-api:latest'
+          format: 'table'
+          severity: 'CRITICAL,HIGH,MEDIUM'
+          exit-code: '0'
