@@ -21,7 +21,7 @@ function createSwaggerOptions(port = process.env.PORT || 3000) {
               },
               message: {
                 type: 'string',
-                example: 'Cinema API đã chạy đúng!',
+                example: 'API rạp chiếu đang hoạt động bình thường!',
               },
             },
           },

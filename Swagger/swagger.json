@@ -21,7 +21,7 @@
           },
           "message": {
             "type": "string",
-            "example": "Cinema API đã chạy đúng!"
+            "example": "API rạp chiếu đang hoạt động bình thường!"
           }
         }
       },
@@ -220,7 +220,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Khong tim thay phim."
+            "example": "Không tìm thấy phim."
           }
         }
       }
@@ -305,7 +305,7 @@
             }
           },
           "400": {
-            "description": "Du lieu gui len khong hop le",
+            "description": "Dữ liệu gửi lên không hợp lệ",
             "content": {
               "application/json": {
                 "schema": {
@@ -416,7 +416,7 @@
             }
           },
           "400": {
-            "description": "ID hoac du lieu gui len khong hop le",
+            "description": "ID hoặc dữ liệu gửi lên không hợp lệ",
             "content": {
               "application/json": {
                 "schema": {
@@ -426,7 +426,7 @@
             }
           },
           "404": {
-            "description": "Khong tim thay phim",
+            "description": "Không tìm thấy phim",
             "content": {
               "application/json": {
                 "schema": {

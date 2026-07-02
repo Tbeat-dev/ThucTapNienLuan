@@ -55,15 +55,15 @@ let nextEmployeeId = 3;
 
 function validateMoviePayload(payload) {
   if (!payload || typeof payload !== 'object') {
-    return 'Du lieu gui len khong hop le.';
+    return 'Dữ liệu gửi lên không hợp lệ.';
   }
 
   if (typeof payload.title !== 'string' || payload.title.trim() === '') {
-    return 'Vui long nhap ten phim.';
+    return 'Vui lòng nhập tên phim.';
   }
 
   if (typeof payload.director !== 'string' || payload.director.trim() === '') {
-    return 'Vui long nhap ten dao dien.';
+    return 'Vui lòng nhập tên đạo diễn.';
   }
 
   return null;
@@ -71,19 +71,19 @@ function validateMoviePayload(payload) {
 
 function validateRoomPayload(payload) {
   if (!payload || typeof payload !== 'object') {
-    return 'Du lieu gui len khong hop le.';
+    return 'Dữ liệu gửi lên không hợp lệ.';
   }
 
   if (typeof payload.name !== 'string' || payload.name.trim() === '') {
-    return 'Vui long nhap ten phong chieu.';
+    return 'Vui lòng nhập tên phòng chiếu.';
   }
 
   if (!Number.isInteger(payload.capacity) || payload.capacity <= 0) {
-    return 'Vui long nhap suc chua hop le.';
+    return 'Vui lòng nhập sức chứa hợp lệ.';
   }
 
   if (typeof payload.type !== 'string' || payload.type.trim() === '') {
-    return 'Vui long nhap loai phong.';
+    return 'Vui lòng nhập loại phòng.';
   }
 
   return null;
@@ -91,27 +91,27 @@ function validateRoomPayload(payload) {
 
 function validateSchedulePayload(payload) {
   if (!payload || typeof payload !== 'object') {
-    return 'Du lieu gui len khong hop le.';
+    return 'Dữ liệu gửi lên không hợp lệ.';
   }
 
   if (!Number.isInteger(payload.movieId) || payload.movieId <= 0) {
-    return 'Vui long nhap ID phim hop le.';
+    return 'Vui lòng nhập ID phim hợp lệ.';
   }
 
   if (!Number.isInteger(payload.roomId) || payload.roomId <= 0) {
-    return 'Vui long nhap ID phong hop le.';
+    return 'Vui lòng nhập ID phòng hợp lệ.';
   }
 
   if (typeof payload.startTime !== 'string' || payload.startTime.trim() === '') {
-    return 'Vui long nhap thoi gian bat dau.';
+    return 'Vui lòng nhập thời gian bắt đầu.';
   }
 
   if (typeof payload.endTime !== 'string' || payload.endTime.trim() === '') {
-    return 'Vui long nhap thoi gian ket thuc.';
+    return 'Vui lòng nhập thời gian kết thúc.';
   }
 
   if (!Number.isFinite(payload.price) || payload.price <= 0) {
-    return 'Vui long nhap gia ve hop le.';
+    return 'Vui lòng nhập giá vé hợp lệ.';
   }
 
   return null;
@@ -119,23 +119,23 @@ function validateSchedulePayload(payload) {
 
 function validateEmployeePayload(payload) {
   if (!payload || typeof payload !== 'object') {
-    return 'Du lieu gui len khong hop le.';
+    return 'Dữ liệu gửi lên không hợp lệ.';
   }
 
   if (typeof payload.fullName !== 'string' || payload.fullName.trim() === '') {
-    return 'Vui long nhap ho ten nhan vien.';
+    return 'Vui lòng nhập họ tên nhân viên.';
   }
 
   if (typeof payload.role !== 'string' || payload.role.trim() === '') {
-    return 'Vui long nhap chuc vu.';
+    return 'Vui lòng nhập chức vụ.';
   }
 
   if (typeof payload.phone !== 'string' || payload.phone.trim() === '') {
-    return 'Vui long nhap so dien thoai.';
+    return 'Vui lòng nhập số điện thoại.';
   }
 
   if (typeof payload.email !== 'string' || payload.email.trim() === '') {
-    return 'Vui long nhap email.';
+    return 'Vui lòng nhập email.';
   }
 
   return null;
@@ -145,7 +145,7 @@ function parseMovieId(req, res) {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id) || id <= 0) {
-    res.status(400).json({ message: 'ID phim khong hop le.' });
+    res.status(400).json({ message: 'ID phim không hợp lệ.' });
     return null;
   }
 
@@ -156,7 +156,7 @@ function parsePositiveId(req, res, entityName) {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id) || id <= 0) {
-    res.status(400).json({ message: `ID ${entityName} khong hop le.` });
+    res.status(400).json({ message: `ID ${entityName} không hợp lệ.` });
     return null;
   }
 
@@ -194,7 +194,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
-    message: 'Cinema API is running smoothly!',
+    message: 'API rạp chiếu đang hoạt động bình thường!',
   });
 });
 
@@ -262,7 +262,7 @@ app.get('/movie/:id', (req, res) => {
 
   const movie = movies.find(item => item.id === id);
   if (!movie) {
-    res.status(404).json({ message: 'Khong tim thay phim.' });
+    res.status(404).json({ message: 'Không tìm thấy phim.' });
     return;
   }
 
@@ -296,7 +296,7 @@ app.get('/movie/:id', (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/Movie'
  *       400:
- *         description: Du lieu gui len khong hop le
+ *         description: Dữ liệu gửi lên không hợp lệ
  *         content:
  *           application/json:
  *             schema:
@@ -355,13 +355,13 @@ app.post('/movie', (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/Movie'
  *       400:
- *         description: ID hoac du lieu gui len khong hop le
+ *         description: ID hoặc dữ liệu gửi lên không hợp lệ
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  *       404:
- *         description: Khong tim thay phim
+ *         description: Không tìm thấy phim
  *         content:
  *           application/json:
  *             schema:
@@ -381,7 +381,7 @@ app.put('/movie/:id', (req, res) => {
 
   const movieIndex = movies.findIndex(item => item.id === id);
   if (movieIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay phim.' });
+    res.status(404).json({ message: 'Không tìm thấy phim.' });
     return;
   }
 
@@ -433,7 +433,7 @@ app.delete('/movie/:id', (req, res) => {
 
   const movieIndex = movies.findIndex(item => item.id === id);
   if (movieIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay phim.' });
+    res.status(404).json({ message: 'Không tìm thấy phim.' });
     return;
   }
 
@@ -493,7 +493,7 @@ app.get('/room/:id', (req, res) => {
 
   const room = rooms.find(item => item.id === id);
   if (!room) {
-    res.status(404).json({ message: 'Khong tim thay phong chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy phòng chiếu.' });
     return;
   }
 
@@ -583,7 +583,7 @@ app.put('/room/:id', (req, res) => {
 
   const roomIndex = rooms.findIndex(item => item.id === id);
   if (roomIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay phong chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy phòng chiếu.' });
     return;
   }
 
@@ -624,7 +624,7 @@ app.delete('/room/:id', (req, res) => {
 
   const roomIndex = rooms.findIndex(item => item.id === id);
   if (roomIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay phong chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy phòng chiếu.' });
     return;
   }
 
@@ -684,7 +684,7 @@ app.get('/schedule/:id', (req, res) => {
 
   const schedule = schedules.find(item => item.id === id);
   if (!schedule) {
-    res.status(404).json({ message: 'Khong tim thay lich chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy lịch chiếu.' });
     return;
   }
 
@@ -776,7 +776,7 @@ app.put('/schedule/:id', (req, res) => {
 
   const scheduleIndex = schedules.findIndex(item => item.id === id);
   if (scheduleIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay lich chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy lịch chiếu.' });
     return;
   }
 
@@ -819,7 +819,7 @@ app.delete('/schedule/:id', (req, res) => {
 
   const scheduleIndex = schedules.findIndex(item => item.id === id);
   if (scheduleIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay lich chieu.' });
+    res.status(404).json({ message: 'Không tìm thấy lịch chiếu.' });
     return;
   }
 
@@ -879,7 +879,7 @@ app.get('/employee/:id', (req, res) => {
 
   const employee = employees.find(item => item.id === id);
   if (!employee) {
-    res.status(404).json({ message: 'Khong tim thay nhan vien.' });
+    res.status(404).json({ message: 'Không tìm thấy nhân viên.' });
     return;
   }
 
@@ -970,7 +970,7 @@ app.put('/employee/:id', (req, res) => {
 
   const employeeIndex = employees.findIndex(item => item.id === id);
   if (employeeIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay nhan vien.' });
+    res.status(404).json({ message: 'Không tìm thấy nhân viên.' });
     return;
   }
 
@@ -1012,7 +1012,7 @@ app.delete('/employee/:id', (req, res) => {
 
   const employeeIndex = employees.findIndex(item => item.id === id);
   if (employeeIndex === -1) {
-    res.status(404).json({ message: 'Khong tim thay nhan vien.' });
+    res.status(404).json({ message: 'Không tìm thấy nhân viên.' });
     return;
   }
 
