@@ -1,68 +1,209 @@
-🎬 Hệ thống Quản lý Rạp Chiếu Phim
-Giới thiệu
+# 🎬 Hệ thống Quản lý Rạp Chiếu Phim
 
-Hệ thống Quản lý Rạp Chiếu Phim là một dự án được phát triển nhằm hỗ trợ quản lý các hoạt động của một rạp chiếu phim tập trung thông qua hệ thống RESTful API. Dự án cung cấp các chức năng quản lý phim, phòng chiếu, lịch chiếu và các thành phần liên quan, giúp việc quản trị dữ liệu trở nên nhanh chóng, chính xác và dễ dàng mở rộng.
+> Hệ thống RESTful API hỗ trợ quản lý rạp chiếu phim, được xây dựng bằng **Node.js** và **TypeScript**, triển khai với **Docker**, **Kubernetes** và tài liệu hóa API bằng **Swagger/OpenAPI**.
 
-Hệ thống được xây dựng theo mô hình Backend API, cho phép các ứng dụng Web, Mobile hoặc Desktop dễ dàng tích hợp thông qua các endpoint REST. Toàn bộ API được tài liệu hóa bằng Swagger/OpenAPI, giúp việc kiểm thử và phát triển trở nên thuận tiện hơn.
+---
 
-Ngoài ra, dự án còn được triển khai theo hướng hiện đại với Docker và Kubernetes, hỗ trợ đóng gói, triển khai và mở rộng hệ thống trong môi trường thực tế.
+## 📖 Giới thiệu
 
-Mục tiêu dự án
-Xây dựng hệ thống quản lý rạp chiếu phim theo kiến trúc RESTful API.
-Chuẩn hóa tài liệu API bằng Swagger/OpenAPI.
-Đóng gói ứng dụng bằng Docker.
-Triển khai và quản lý ứng dụng bằng Kubernetes.
-Tạo nền tảng để phát triển Frontend hoặc Mobile trong tương lai.
-Chức năng chính
-Quản lý phim (Movies)
-Xem danh sách phim
-Xem chi tiết phim
-Thêm phim mới
-Cập nhật thông tin phim
-Xóa phim
-Quản lý phòng chiếu (Rooms)
-Xem danh sách phòng
-Thêm phòng
-Cập nhật phòng
-Xóa phòng
-Kiểm tra trạng thái hệ thống
-Health Check API
-Tài liệu API trực quan bằng Swagger UI
-Công nghệ sử dụng
-Node.js
-TypeScript
-RESTful API
-Swagger (OpenAPI)
-Docker
-Kubernetes
-Git & GitHub
-Kiến trúc hệ thống
-Client
-   │
-   ▼
-REST API
-(Node.js + TypeScript)
-   │
-   ├── Movies Module
-   ├── Rooms Module
-   ├── System Module
-   │
-Swagger Documentation
-   │
-Docker Container
-   │
+Hệ thống Quản lý Rạp Chiếu Phim được xây dựng nhằm hỗ trợ việc quản lý dữ liệu của một rạp chiếu phim thông qua các API RESTful. Dự án cung cấp các chức năng quản lý phim, phòng chiếu và các tài nguyên liên quan, đồng thời hỗ trợ tài liệu API trực quan bằng Swagger.
+
+Ứng dụng được container hóa bằng Docker và triển khai trên Kubernetes, giúp quá trình triển khai và mở rộng hệ thống trở nên đơn giản và hiệu quả.
+
+---
+
+## ✨ Tính năng
+
+- 🎥 Quản lý phim
+    - Xem danh sách phim
+    - Xem chi tiết phim
+    - Thêm phim mới
+    - Cập nhật phim
+    - Xóa phim
+
+- 🏢 Quản lý phòng chiếu
+    - Xem danh sách phòng
+    - Xem chi tiết phòng
+    - Thêm phòng
+    - Cập nhật phòng
+    - Xóa phòng
+
+- ❤️ Health Check API
+
+- 📄 Tài liệu API với Swagger UI
+
+---
+
+## 🛠 Công nghệ sử dụng
+
+| Công nghệ | Mục đích |
+|-----------|----------|
+| Node.js | Backend Runtime |
+| TypeScript | Ngôn ngữ lập trình |
+| Express.js | Xây dựng REST API |
+| Swagger/OpenAPI | Tài liệu API |
+| Docker | Container hóa ứng dụng |
+| Kubernetes | Triển khai và quản lý Container |
+| Git & GitHub | Quản lý mã nguồn |
+
+---
+
+## 📂 Cấu trúc dự án
+
+```
+.
+├── .github/
+│   └── workflows/
+├── Swagger/
+├── Backend/
+├── k8s/
+├── Dockerfile
+├── README.md
+└── ...
+```
+
+---
+
+## 🚀 Chức năng API
+
+### 🎥 Movies
+
+| Method | Endpoint | Chức năng |
+|---------|----------|-----------|
+| GET | /movie | Lấy danh sách phim |
+| GET | /movie/{id} | Lấy thông tin phim |
+| POST | /movie | Thêm phim |
+| PUT | /movie/{id} | Cập nhật phim |
+| DELETE | /movie/{id} | Xóa phim |
+
+---
+
+### 🏢 Rooms
+
+| Method | Endpoint | Chức năng |
+|---------|----------|-----------|
+| GET | /room | Lấy danh sách phòng |
+| GET | /room/{id} | Lấy thông tin phòng |
+| POST | /room | Thêm phòng |
+| PUT | /room/{id} | Cập nhật phòng |
+| DELETE | /room/{id} | Xóa phòng |
+
+---
+
+### ⚙️ System
+
+| Method | Endpoint | Chức năng |
+|---------|----------|-----------|
+| GET | /health | Kiểm tra trạng thái hệ thống |
+
+---
+
+## 🐳 Docker
+
+Build Image
+
+```bash
+docker build -t cinema-api .
+```
+
+Run Container
+
+```bash
+docker run -p 3000:3000 cinema-api
+```
+
+---
+
+## ☸ Kubernetes
+
+Triển khai ứng dụng
+
+```bash
+kubectl apply -f k8s/
+```
+
+Kiểm tra Pod
+
+```bash
+kubectl get pods
+```
+
+Kiểm tra Service
+
+```bash
+kubectl get svc
+```
+
+---
+
+## 📚 Swagger
+
+Sau khi chạy ứng dụng:
+
+```
+http://localhost:3000/api-docs
+```
+
+Swagger cung cấp giao diện trực quan để:
+
+- Xem toàn bộ API
+- Test API trực tiếp
+- Theo dõi Request/Response
+
+---
+
+## 🔄 Quy trình phát triển
+
+```
+Developer
+      │
+      ▼
+GitHub Repository
+      │
+      ▼
+GitHub Actions
+      │
+      ▼
+Docker Build
+      │
+      ▼
 Kubernetes Deployment
-Kết quả đạt được
-Xây dựng thành công hệ thống REST API phục vụ quản lý rạp chiếu phim.
-Tích hợp Swagger để tự động sinh tài liệu API và hỗ trợ kiểm thử.
-Đóng gói ứng dụng bằng Docker giúp triển khai nhất quán.
-Triển khai trên Kubernetes, hỗ trợ mở rộng và quản lý dịch vụ hiệu quả.
-Thiết lập quy trình quản lý mã nguồn thông qua GitHub.
-Định hướng phát triển
-Xây dựng giao diện Web quản trị.
-Phát triển ứng dụng Mobile.
-Bổ sung chức năng quản lý người dùng và phân quyền.
-Tích hợp hệ thống đặt vé trực tuyến.
-Thanh toán trực tuyến.
-Quản lý ghế ngồi và suất chiếu.
-Thống kê doanh thu và báo cáo.
+      │
+      ▼
+Running Application
+```
+
+---
+
+## 📌 Mục tiêu dự án
+
+- Xây dựng RESTful API chuẩn.
+- Áp dụng TypeScript trong Backend.
+- Tài liệu hóa API bằng Swagger.
+- Container hóa ứng dụng với Docker.
+- Triển khai bằng Kubernetes.
+- Quản lý mã nguồn bằng GitHub.
+
+---
+
+## 🚀 Định hướng phát triển
+
+- Đăng nhập và phân quyền (JWT)
+- Quản lý người dùng
+- Quản lý lịch chiếu
+- Quản lý ghế ngồi
+- Đặt vé trực tuyến
+- Thanh toán trực tuyến
+- Báo cáo doanh thu
+- Logging và Monitoring
+- Unit Test và Integration Test
+
+---
+
+## 👨‍💻 Tác giả
+
+**Quốc Thịnh**
+
+Sinh viên ngành Công nghệ Thông tin.
+
+GitHub: https://github.com/Tbeat-dev
