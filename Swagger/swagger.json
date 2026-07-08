@@ -7,7 +7,12 @@
   },
   "servers": [
     {
-      "url": "/"
+      "url": "/api/proxy/cinema-api",
+      "description": "Qua Backstage Proxy (local)"
+    },
+    {
+      "url": "/",
+      "description": "Trực tiếp trên Killercoda"
     }
   ],
   "components": {
