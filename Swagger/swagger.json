@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "/api/proxy/cinema-api",
+      "url": "http://localhost:7007/api/proxy/cinema-api",
       "description": "Qua Backstage Proxy (local)"
     },
     {
-      "url": "/",
+      "url": "https://e363ec4086d4-10-244-11-166-31946.spca.r.killercoda.com/",
       "description": "Trực tiếp trên Killercoda"
     }
   ],
